@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EmojiLingo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            margin-top: 0;
+        }
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        label {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        select {
+            font-size: 24px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 10px;
+        }
+        button {
+            font-size: 24px;
+            padding: 5px 20px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+        .swap {
+            font-size: 24px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .swap:hover {
+            color: #3e8e41;
+        }
+        textarea {
+            font-size: 24px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            height: 200px;
+            font-family: Arial, sans-serif;
+        }
+        .output {
+            font-size: 24px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            height: 100px;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: left;
+            white-space: pre-line;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>EmojiLingo</h1>
+    <form id="translation-form">
+        <label for="from-language">From:</label>
+        <select id="from-language">
+            <option value="english" selected>English</option>
+            <option value="french">French</option>
+            <option value="espanol">Spanish</option>
+            <option value="deutsch">German</option>
+            <option value="italian">Italian</option>
+            <option value="portuguese">Portuguese</option>
+            <option value="russian">Russian</option>
+            <option value="chinese_simplified">Chinese Simplified</option>
+            <option value="chinese_traditional">Chinese Traditional</option>
+            <option value="japanese">Japanese</option>
+            <option value="korean">Korean</option>
+            <option value="arabic">Arabic</option>
+            <option value="hindi">Hindi</option>
+            <option value="turkish">Turkish</option>
+            <option value="emoji">Emoji</option>
+        </select>
+        <label for="to-language">To:</label>
+        <select id="to-language">
+            <option value="english">English</option>
+            <option value="french">French</option>
+            <option value="espanol">Spanish</option>
+            <option value="deutsch">German</option>
+            <option value="italian">Italian</option>
+            <option value="portuguese">Portuguese</option>
+            <option value="russian">Russian</option>
+            <option value="chinese_simplified">Chinese Simplified</option>
+            <option value="chinese_traditional">Chinese Traditional</option>
+            <option value="japanese">Japanese</option>
+            <option value="korean">Korean</option>
+            <option value="arabic">Arabic</option>
+            <option value="hindi">Hindi</option>
+            <option value="turkish">Turkish</option>
+            <option value="emoji" selected>Emoji</option>
+        </select>
+        <button id="swap-button" class="swap" type="button">&#8646;</button>
+        <textarea id="input-text" placeholder="Enter text to translate here..."></textarea>
+        <button id="translate-button" type="submit">Translate</button>
+    </form>
+    <div id="output-text" class="output"></div>
+</div>
+<script>
+    const form = document.querySelector('#translation-form');
+    const fromLanguage = document.querySelector('#from-language');
+    const toLanguage = document.querySelector('#to-language');
+    const swapButton = document.querySelector('#swap-button');
+    const inputText = document.querySelector('#input-text');
+    const outputText = document.querySelector('#output-text');
+    const translateButton = document.querySelector('#translate-button');
+
+    fromLanguage.addEventListener('change', () => {
+        if (fromLanguage.value === 'emoji') {
+            toLanguage.value = 'english';
+            inputText.setAttribute('placeholder', 'Enter emoji to translate here...');
+        } else {
+            toLanguage.value = 'emoji';
+            inputText.setAttribute('placeholder', 'Enter text to translate here...');
+        }
+        if (fromLanguage.value === "turkish") {
+            console.log("🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷")
+        }
+    })
+
+    toLanguage.addEventListener('change', () => {
+        if (toLanguage.value === 'emoji') {
+            fromLanguage.value = 'english';
+            inputText.setAttribute('placeholder', 'Enter emoji to translate here...');
+        } else {
+            fromLanguage.value = 'emoji';
+            inputText.setAttribute('placeholder', 'Enter text to translate here...');
+        }
+        if (toLanguage.value === "turkish") {
+            console.log("🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷")
+        }
+    })
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        translateButton.disabled = true;
+        translateButton.innerHTML = 'Translating...';
+        const text = inputText.value;
+        const from = fromLanguage.value;
+        const to = toLanguage.value;
+        const emtotx = from === 'emoji'
+        console.log(emtotx)
+        fetch(`/translate?text=${text}&language=${emtotx ? to : from}&emtotx=${emtotx}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+            .then(data => {
+                outputText.innerHTML = data.response;
+                outputText.style.display = 'block';
+                translateButton.disabled = false;
+                translateButton.innerHTML = 'Translate';
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    });
+
+    swapButton.addEventListener('click', () => {
+        const fromValue = fromLanguage.value;
+        fromLanguage.value = toLanguage.value;
+        toLanguage.value = fromValue;
+    });
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFDJZXWSDM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NFDJZXWSDM');
+</script>
+</body>
+
+</html>
+
